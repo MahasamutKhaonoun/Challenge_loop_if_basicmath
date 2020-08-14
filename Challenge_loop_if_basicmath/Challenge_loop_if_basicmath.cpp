@@ -1,9 +1,11 @@
 #include<stdio.h>
 #include<math.h>
+
 int n1, n2, N;
 float average, total = 0, Ntotal = 0, sd = 0, SD;
 
 float P_SD(float a) {
+
 	float xi;
 	xi = (a - average) * (a - average);
 	return xi;
@@ -38,6 +40,7 @@ int main()
 		printf("\nAverage = %.1f", average);
 		printf("\nSD = %.2f", SD);
 	}
+
 	else if (n1 > n2)
 	{
 		N = n1;
