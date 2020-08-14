@@ -13,51 +13,58 @@ float P_SD(float a) {
 }
 int main()
 {
-	scanf_s("%d %d", &n1, &n2);
-	if (n1 == n2)
+	if (scanf_s("%d %d", &n1, &n2))
 	{
-		printf("%d", n1);
-		average = n1;
-		printf("\nAverage = %.1f", average);
-		printf("\nSD = 0.00");
-	}
+		if (n1 < n2)
+		{
+			N = n1;
+			for (;N <= n2;N++)
+			{
+				printf("%d ", N);
+				total = total + N;
+				Ntotal = Ntotal + 1;
+			}
+			average = total / Ntotal;
+			for (;n1 <= n2;n1++)
+			{
+				sd = sd + P_SD(n1);
+			}
+			SD = sqrt(sd / (Ntotal - 1));
+			printf("\nAverage = %.1f", average);
+			printf("\nSD = %.2f", SD);
+		}
 
-	else if (n1 < n2)
-	{
-		N = n1;
-		for (;N <= n2;N++)
+		else if (n1 > n2)
 		{
-			printf("%d ", N);
-			total = total + N;
-			Ntotal = Ntotal + 1;
+			N = n1;
+			for (;N >= n2;N--)
+			{
+				printf("%d ", N);
+				total = total + N;
+				Ntotal = Ntotal + 1;
+			}
+			average = total / Ntotal;
+			for (;n1 >= n2;n1--)
+			{
+				sd = sd + P_SD(n1);
+			}
+			SD = sqrt(sd / (Ntotal - 1));
+			printf("\nAverage = %.1f", average);
+			printf("\nSD = %.2f", SD);
 		}
-		average = total / Ntotal;
-		for (;n1 <= n2;n1++)
-		{
-			sd = sd + P_SD(n1);
-		}
-		SD = sqrt(sd / (Ntotal - 1));
-		printf("\nAverage = %.1f", average);
-		printf("\nSD = %.2f", SD);
-	}
 
-	else if (n1 > n2)
-	{
-		N = n1;
-		for (;N >= n2;N--)
+		else if (n1 == n2)
 		{
-			printf("%d ", N);
-			total = total + N;
-			Ntotal = Ntotal + 1;
+			printf("%d", n1);
+			average = n1;
+			printf("\nAverage = %.1f", average);
+			printf("\nSD = 0.00");
 		}
-		average = total / Ntotal;
-		for (;n1 >= n2;n1--)
-		{
-			sd = sd + P_SD(n1);
-		}
-		SD = sqrt(sd / (Ntotal - 1));
-		printf("\nAverage = %.1f", average);
-		printf("\nSD = %.2f", SD);
 	}
+	else
+	{
+		printf("Error");
+	}
+	
 	return 0;
 }
